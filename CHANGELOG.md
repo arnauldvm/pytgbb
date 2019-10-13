@@ -6,11 +6,11 @@ _Format of this file is based on the convention described in
 
 <!-- TOC depthFrom:2 depthTo:2 -->
 
-- [0.0.0 - _Unreleased_](#000---_unreleased_)
+- [0.0.1a1.dev0 - _Unreleased_](#001a1dev0---_unreleased_)
 
 <!-- /TOC -->
 
-## 0.0.0 - _Unreleased_
+## 0.0.1a1.dev0 - _Unreleased_
 
 Initiate the project.
 

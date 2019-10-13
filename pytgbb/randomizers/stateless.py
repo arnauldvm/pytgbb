@@ -11,7 +11,7 @@ class StatelessRandomizer(Randomizer):
         elif isinstance(values, Sequence):
             self.values = values
         else:
-            raise TypeError("Stateless constructor expects an int or a Sequence, got {}".format(type(values)))
+            raise TypeError("StatelessRandomizer constructor expects an int or a Sequence, got {}".format(type(values)))
         super(StatelessRandomizer, self).__init__()
 
     def draw(self):

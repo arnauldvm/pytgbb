@@ -15,5 +15,9 @@ class Randomizer(ABC):
         pass
 
     @abstractmethod
+    def draws(self, count):
+        pass
+
+    @abstractmethod
     def __len__(self):
         pass

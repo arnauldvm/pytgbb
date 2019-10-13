@@ -17,5 +17,8 @@ class StatelessRandomizer(Randomizer):
     def draw(self):
         return self.random.choice(self.values)
 
+    def draws(self, count=1):
+        return [ self.draw() for _ in range(count) ]
+
     def __len__(self):
         return len(self.values)

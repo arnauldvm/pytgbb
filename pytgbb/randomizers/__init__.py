@@ -1,3 +1,3 @@
-from.stateless import StatelessRandomizer
+from.stateless import StatelessRandomizer, Die
 
-__all__ = [ StatelessRandomizer ]
+__all__ = [ 'StatelessRandomizer', 'Die' ]

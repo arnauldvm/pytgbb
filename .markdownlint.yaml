@@ -1,0 +1,6 @@
+---
+MD003:  # heading-style
+  style: atx
+MD013:  # line-length
+  line_length: 120
+...

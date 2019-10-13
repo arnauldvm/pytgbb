@@ -1,5 +1,7 @@
+<!-- markdownlint-disable MD003 -->
 Analysis
 ========
+<!-- markdownlint-restore -->
 
 <!-- TOC -->
 

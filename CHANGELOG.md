@@ -1,5 +1,7 @@
+<!-- markdownlint-disable MD003 -->
 Changelog
 =========
+<!-- markdownlint-restore -->
 
 _Format of this file is based on the convention described in
 <https://keepachangelog.com/en/1.1.0/>._

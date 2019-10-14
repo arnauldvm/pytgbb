@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from random import Random
 
+
 class Randomizer(ABC):
 
     def __init__(self):

@@ -8,4 +8,4 @@ egg_info_dir = 'pytgbb.egg-info'
 if isdir(egg_info_dir):
     rmtree(egg_info_dir)
 
-setup(packages = find_namespace_packages(include=['pytgbb.*']))
+setup(packages=find_namespace_packages(include=['pytgbb.*']))

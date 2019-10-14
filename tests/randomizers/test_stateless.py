@@ -2,6 +2,7 @@ import unittest
 
 from pytgbb.randomizers import StatelessRandomizer, Die
 
+
 class StatelessRandomizerTestCase(unittest.TestCase):
 
     def testFromInt(self):
@@ -28,6 +29,7 @@ class StatelessRandomizerTestCase(unittest.TestCase):
 
     def testFromDict(self):
         self.assertRaises(TypeError, StatelessRandomizer, {})
+
 
 class DieTestCase(unittest.TestCase):
 

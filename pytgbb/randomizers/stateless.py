@@ -18,7 +18,7 @@ class StatelessRandomizer(Randomizer):
         return self.random.choice(self.values)
 
     def draws(self, count=1):
-        return [ self.draw() for _ in range(count) ]
+        return [self.draw() for _ in range(count)]
 
     def __len__(self):
         return len(self.values)
@@ -32,5 +32,4 @@ class Die(StatelessRandomizer):
         super(Die, self).__init__(sides)
 
     def draw(self):
-        return super(Die, self).draw() + 1
-
+        return super(Die, self).draw()+1

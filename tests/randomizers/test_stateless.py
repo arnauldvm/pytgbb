@@ -43,5 +43,11 @@ class DieTestCase(unittest.TestCase):
             self.assertIn(d, range(1, 11))
 
     def testFromSequence(self):
-        seq = ('a', 'b', 'c', 1, 2, 3, 1.1, 2.2, 3.3)
-        self.assertRaises(TypeError, Die, seq)
+        seq = (9, 10, 'J', 'Q', 'K', 'A')
+        die = Die(seq)
+        self.assertEqual(len(die), 6)
+        die.seed(0)
+        for _ in range(100):
+            self.assertIn(die.draw(), seq)
+        for d in die.draws(100):
+            self.assertIn(d, seq)

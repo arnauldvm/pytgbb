@@ -27,9 +27,9 @@ class StatelessRandomizer(Randomizer):
 class Die(StatelessRandomizer):
 
     def __init__(self, sides):
-        if not isinstance(sides, int):
-            raise TypeError("Die constructor expects an int, got {}".format(type(sides)))
+        if isinstance(sides, int):
+            sides = range(1, sides+1)
         super(Die, self).__init__(sides)
 
     def draw(self):
-        return super(Die, self).draw()+1
+        return super(Die, self).draw()

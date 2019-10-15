@@ -32,9 +32,6 @@ class Die(StatelessRandomizer, Generic[T]):
             sides = range(1, sides+1)
         super(Die, self).__init__(sides)
 
-    def draw(self) -> T:
-        return super(Die, self).draw()
-
 
 class Spinner(StatelessRandomizer):
 
@@ -43,10 +40,7 @@ class Spinner(StatelessRandomizer):
             sectors = range(1, sectors+1)
         super(Spinner, self).__init__(sectors)
 
-    def draw(self):
-        return super(Spinner, self).draw()
-
-    spin = draw
+    spin = StatelessRandomizer.draw
 
     spins = StatelessRandomizer.draws
 

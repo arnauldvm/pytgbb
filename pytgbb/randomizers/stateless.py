@@ -33,3 +33,21 @@ class Die(StatelessRandomizer):
 
     def draw(self):
         return super(Die, self).draw()
+
+
+class Spinner(StatelessRandomizer):
+
+    def __init__(self, sectors):
+        if isinstance(sectors, int):
+            sectors = range(1, sectors+1)
+        super(Spinner, self).__init__(sectors)
+
+    def draw(self):
+        return super(Spinner, self).draw()
+
+    spin = draw
+
+    spins = StatelessRandomizer.draws
+
+
+Wheel = Spinner

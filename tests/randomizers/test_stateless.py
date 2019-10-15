@@ -1,6 +1,6 @@
 import unittest
 
-from pytgbb.randomizers import StatelessRandomizer, Die
+from pytgbb.randomizers import StatelessRandomizer, Die, Spinner, Wheel
 
 
 class StatelessRandomizerTestCase(unittest.TestCase):
@@ -51,3 +51,37 @@ class DieTestCase(unittest.TestCase):
             self.assertIn(die.draw(), seq)
         for d in die.draws(100):
             self.assertIn(d, seq)
+
+
+class SpinnerTestCase(unittest.TestCase):
+
+    def testFromInt(self):
+        spinner = Spinner(10)
+        self.assertEqual(len(spinner), 10)
+        spinner.seed(0)
+        for _ in range(100):
+            self.assertIn(spinner.spin(), range(1, 11))
+        for d in spinner.spins(100):
+            self.assertIn(d, range(1, 11))
+
+    def testFromSequence(self):
+        seq = (9, 10, 'J', 'Q', 'K', 'A')
+        spinner = Spinner(seq)
+        self.assertEqual(len(spinner), 6)
+        spinner.seed(0)
+        for _ in range(100):
+            self.assertIn(spinner.spin(), seq)
+        for d in spinner.spins(100):
+            self.assertIn(d, seq)
+
+
+class WheelTestCase(unittest.TestCase):
+
+    def testFromInt(self):
+        wheel = Wheel(15)
+        self.assertEqual(len(wheel), 15)
+        wheel.seed(0)
+        for _ in range(100):
+            self.assertIn(wheel.spin(), range(1, 16))
+        for d in wheel.spins(100):
+            self.assertIn(d, range(1, 16))

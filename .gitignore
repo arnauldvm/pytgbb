@@ -1,3 +1,4 @@
 /.venv/
 __pycache__
 /pytgbb.egg-info/
+/.mypy_cache/

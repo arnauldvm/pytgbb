@@ -1,11 +1,12 @@
-from collections import Sequence
+from typing import Union, Sequence
 
 from .randomizer import Randomizer
 
 
 class StatelessRandomizer(Randomizer):
 
-    def __init__(self, values):
+    def __init__(self, values: Union[int, Sequence]):
+        self.values: Sequence
         if isinstance(values, int):
             self.values = range(values)
         elif isinstance(values, Sequence):
@@ -17,16 +18,16 @@ class StatelessRandomizer(Randomizer):
     def draw(self):
         return self.random.choice(self.values)
 
-    def draws(self, count=1):
+    def draws(self, count: int = 1):
         return [self.draw() for _ in range(count)]
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.values)
 
 
 class Die(StatelessRandomizer):
 
-    def __init__(self, sides):
+    def __init__(self, sides: Union[int, Sequence]):
         if isinstance(sides, int):
             sides = range(1, sides+1)
         super(Die, self).__init__(sides)
@@ -37,7 +38,7 @@ class Die(StatelessRandomizer):
 
 class Spinner(StatelessRandomizer):
 
-    def __init__(self, sectors):
+    def __init__(self, sectors: Union[int, Sequence]):
         if isinstance(sectors, int):
             sectors = range(1, sectors+1)
         super(Spinner, self).__init__(sectors)

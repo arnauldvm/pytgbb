@@ -1,12 +1,12 @@
-from typing import Union, Sequence
+from typing import Generic, Union, Sequence, List
 
-from .randomizer import Randomizer
+from .randomizer import Randomizer, T
 
 
-class StatelessRandomizer(Randomizer):
+class StatelessRandomizer(Randomizer, Generic[T]):
 
-    def __init__(self, values: Union[int, Sequence]):
-        self.values: Sequence
+    def __init__(self, values: Union[int, Sequence[T]]):
+        self.values: Union[Sequence[int], Sequence[T]]
         if isinstance(values, int):
             self.values = range(values)
         elif isinstance(values, Sequence):
@@ -15,24 +15,24 @@ class StatelessRandomizer(Randomizer):
             raise TypeError("StatelessRandomizer constructor expects an int or a Sequence, got {}".format(type(values)))
         super(StatelessRandomizer, self).__init__()
 
-    def draw(self):
+    def draw(self) -> T:
         return self.random.choice(self.values)
 
-    def draws(self, count: int = 1):
+    def draws(self, count: int) -> List[T]:
         return [self.draw() for _ in range(count)]
 
     def __len__(self) -> int:
         return len(self.values)
 
 
-class Die(StatelessRandomizer):
+class Die(StatelessRandomizer, Generic[T]):
 
     def __init__(self, sides: Union[int, Sequence]):
         if isinstance(sides, int):
             sides = range(1, sides+1)
         super(Die, self).__init__(sides)
 
-    def draw(self):
+    def draw(self) -> T:
         return super(Die, self).draw()
 
 

@@ -1,8 +1,11 @@
 from abc import ABC, abstractmethod
+from typing import TypeVar, Generic, List
 from random import Random
 
+T = TypeVar('T')
 
-class Randomizer(ABC):
+
+class Randomizer(ABC, Generic[T]):
 
     def __init__(self):
         self.random = Random()
@@ -12,13 +15,13 @@ class Randomizer(ABC):
         self.random.seed(*args, **kwargs)
 
     @abstractmethod
-    def draw(self):
+    def draw(self) -> T:
         pass
 
     @abstractmethod
-    def draws(self, count: int):
+    def draws(self, count: int) -> List[T]:
         pass
 
     @abstractmethod
-    def __len__(self):
+    def __len__(self) -> int:
         pass

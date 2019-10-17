@@ -30,14 +30,13 @@ class Randomizer(ABC, Generic[T]):
         """
         pass
 
-    @abstractmethod
     def draws(self, count: int) -> List[T]:
         """
         Generates *count* random results.
 
-        This must be implemented by the subclasses.
+        This should not be overriden by the subclasses.
         """
-        pass
+        return [self.draw() for _ in range(count)]
 
     @abstractmethod
     def __len__(self) -> int:

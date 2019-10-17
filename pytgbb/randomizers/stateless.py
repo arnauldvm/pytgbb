@@ -1,4 +1,4 @@
-from typing import Generic, Union, Sequence, List
+from typing import Generic, Union, Sequence
 
 from .randomizer import Randomizer, T
 
@@ -31,14 +31,6 @@ class StatelessRandomizer(Randomizer, Generic[T]):
         This does not need to be overriden by the subclasses.
         """
         return self.random.choice(self.values)
-
-    def draws(self, count: int) -> List[T]:
-        """
-        Generates *count* random results.
-
-        This should not be overriden by the subclasses.
-        """
-        return [self.draw() for _ in range(count)]
 
     def __len__(self) -> int:
         """

@@ -28,7 +28,7 @@ class StatelessRandomizer(Randomizer, Generic[T]):
         """
         Generates **one** random result.
 
-        This should not be overriden by the subclasses.
+        This does not need to be overriden by the subclasses.
         """
         return self.random.choice(self.values)
 
@@ -44,7 +44,7 @@ class StatelessRandomizer(Randomizer, Generic[T]):
         """
         Returns the count of possible result values.
 
-        This should not be overriden by the subclasses.
+        This does not need to be overriden by the subclasses.
         """
         return len(self.values)
 
@@ -58,6 +58,44 @@ class Die(StatelessRandomizer, Generic[T]):
         if isinstance(sides, int):
             sides = range(1, sides+1)
         super(Die, self).__init__(sides)
+
+
+class Dice(StatelessRandomizer, Generic[T]):
+    """This class emulates rolling a fistful of dice."""
+    def __init__(self, count: int, sides: Union[int, Sequence]):
+        """Initializes a fistful of Dice. Accepts a number of dice, and either a sequence of values, or an int.
+        In the first case, the result of a roll is a sequence of values.
+        In the latter case, the possible individual values are 1 ... n,
+        and the result of a roll is a tuple consisting of the sum of values, and the sequence of individual values."""
+        self.count = count
+        self.sides = sides
+        self.die: Die[T] = Die(sides)
+
+    def seed(self, *args, **kwargs):
+        """Resets the random generator. Takes the same arguments as the `Random.seed(...)` method"""
+        self.die.seed(*args, **kwargs)
+
+    def draw(self):
+        """
+        Generates **one** random result.
+        """
+        sum: int = None
+        values = []
+        for _ in range(self.count):
+            value = self.die.draw()
+            if isinstance(self.sides, int):
+                sum = sum + value if sum is not None else value
+            values.append(value)
+        if sum is None:
+            return values
+        else:
+            return (sum, values)
+
+    def __len__(self) -> int:
+        """
+        Returns the count of possible result values.
+        """
+        return self.count*len(self.die)
 
 
 class Spinner(StatelessRandomizer):

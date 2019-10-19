@@ -19,6 +19,7 @@ These are building blocks that are candidate to be represented in the library:
   - stateful
     - deck of cards (the order is predetermined: one might peek at the next cards)
     - bag of chips/counters/tokens (no predetermined order)
+- Cards, Tokens
 - Trackers, Gauges
   - VP/money/resources track/tokens
 - Pick-Up / Choice

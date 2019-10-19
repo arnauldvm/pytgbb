@@ -29,9 +29,7 @@ class Deck(StatefulRandomizer, Generic[T]):
         Draws **one** card at random from the deck. The card is removed from the deck.
         """
         i = self.random.randrange(len(self.cards))
-        card = self.cards[i]
-        del self.cards[i]
-        return card
+        return self.cards.pop(i)
 
     def __len__(self) -> int:
         """

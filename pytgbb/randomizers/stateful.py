@@ -34,7 +34,7 @@ class Deck(StatefulRandomizer, Generic[T]):
         Shows (a copy of) the next card from the deck. The card is **not** removed from the deck.
         """
         if not self.cache:
-            self.cache.append(self._preselect())
+            self.cache.append(self.__preselect())
         return self.cache[0]
 
     def peeks(self, count: int) -> Sequence[T]:
@@ -42,10 +42,10 @@ class Deck(StatefulRandomizer, Generic[T]):
         Shows (copies of) the next *count* cards from the deck. The cards are **not** removed from the deck.
         """
         while len(self.cache) < count:
-            self.cache.append(self._preselect())
+            self.cache.append(self.__preselect())
         return self.cache[0:count]
 
-    def _preselect(self) -> T:
+    def __preselect(self) -> T:
         # Private method for chosing a card at random
         i = self.random.randrange(len(self.cards))
         return self.cards.pop(i)
@@ -56,7 +56,7 @@ class Deck(StatefulRandomizer, Generic[T]):
         """
         if self.cache:
             return self.cache.pop(0)
-        return self._preselect()
+        return self.__preselect()
 
     def __len__(self) -> int:
         """

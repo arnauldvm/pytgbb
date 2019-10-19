@@ -1,29 +1,29 @@
 import unittest
 
-from pytgbb.randomizers import Deck
+from pytgbb.randomizers import Bag
 
 
-class DeckTestCase(unittest.TestCase):
+class BagTestCase(unittest.TestCase):
 
     def testDraw(self):
-        deck = Deck(range(1, 101))
-        self.assertEqual(len(deck), 100)
-        deck.seed(0)
+        bag = Bag(range(1, 101))
+        self.assertEqual(len(bag), 100)
+        bag.seed(0)
         count = 0
-        while len(deck) > 0:
-            card = deck.draw()
+        while len(bag) > 0:
+            token = bag.draw()
             count += 1
-            self.assertIn(card, range(1, 101))
+            self.assertIn(token, range(1, 101))
         self.assertEqual(count, 100)
 
     def testDraws(self):
-        deck = Deck(range(1, 101))
-        self.assertEqual(len(deck), 100)
-        deck.seed(0)
+        bag = Bag(range(1, 101))
+        self.assertEqual(len(bag), 100)
+        bag.seed(0)
         count = 0
-        while len(deck) > 0:
-            cards = deck.draws(10)
-            count += len(cards)
-            for card in cards:
-                self.assertIn(card, range(1, 101))
+        while len(bag) > 0:
+            tokens = bag.draws(10)
+            count += len(tokens)
+            for token in tokens:
+                self.assertIn(token, range(1, 101))
         self.assertEqual(count, 100)

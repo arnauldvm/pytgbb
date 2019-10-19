@@ -66,7 +66,7 @@ class Deck(StatefulRandomizer, Generic[T]):
         """
         return len(self.cards) + len(self.cache)
 
-    # TODO: put cards back in the deck
+    # TODO: put cards back in the deck. What about shuffling?
 
 
 class Bag(StatefulRandomizer, Generic[T]):

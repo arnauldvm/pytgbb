@@ -11,6 +11,7 @@ class Randomizer(ABC, Generic[T]):
 
     The results can be any type such as: an int, a color, a Card...
     """
+    # TODO: Consider if Randomizers could be iterators/iterable
 
     def __init__(self):
         """The constructor of th abstract class akes care of initializing the random generator."""
